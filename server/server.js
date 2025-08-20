@@ -10,7 +10,7 @@ server.on('connection', (ws) => {
     ws.send(`Echo: ${message}`);
   });
 
-  ws.close('close', () => {
+  ws.on('close', () => {
     console.log('Client disconnected');
   });
 
