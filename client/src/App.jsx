@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import { useState } from "react";
 import MessagesContainer from "./components/MessagesContainer";
 import Input from "./components/Input";
+import { v4 as uuidv4 } from "uuid";
 
 const App = () => {
   const messagesContainerRef = useRef(null);
@@ -47,10 +48,11 @@ const App = () => {
   };
 
   const addMessage = (message, type = "user") => {
+    const id = uuidv4();
     setMessages((prev) => [
       ...prev,
       {
-        id: Date.now(),
+        id: id,
         text: message,
         type: type,
         timestamp: new Date().toISOString(),
